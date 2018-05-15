@@ -26,29 +26,7 @@
     gem: name={{item}} state=present
     with_items:
       - watir
-
-# - ===================   Python 3
-
-# Install Python 3.6
-  - name: Download Python 3.6
-    get_url: dest=/tmp url=http://www.python.org/ftp/python/3.6.5/Python-3.6.5.tar.xz 
-
-  - name: Ensure Python 3.6 is extracted
-    shell: chdir=/tmp tar xJf ./Python-3.6.5.tar.xz -C /opt creates=/opt/Python-3.6.5
-
-  - name: Ensure Python 3.6 is configured
-    shell: chdir=/opt/Python-3.6.5 ./configure --prefix=/opt/python3.6
-
-  - name: Ensure Python 3.6 make'd
-    shell: chdir=/opt/Python-3.6.5 make
-
-  - name: Configure python 3.6 to be the python v3 available in the local machine
-    shell: chdir=/usr/bin rm -rf python3* && sudo ln -s /opt/Python-3.6.5/python python3
-
-# - =================    install pip dev tools I like
-  - name: install pip dev tools
-    shell: 'pip install locustio' 
-
+      
 # - ===================   Docker setup
   - name: Ensure group docker
     group: 
@@ -99,7 +77,3 @@
   - name: install nvm
     shell: 'curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash'
     ignore_errors: yes
-
-# - =================    install pip dev tools I like
-  - name: install pip dev tools
-    shell: 'pip install locustio' 
