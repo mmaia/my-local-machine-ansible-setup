@@ -67,7 +67,16 @@
       mode: '555'
     when: docker_compose_desired_version_installed == false
 # - ===================   End Docker setup
-  
+# - ===================   install google chrome
+  - name: download google chrome
+    become: 'true'
+    get_url:
+      url: 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+      dest: '/tmp'
+      force: true
+      mode: '555'
+  - name: install google chrome
+    shell: 'cd /tmp && dpkg -i google-chrome-stable_current_amd64.deb'
 # - ===================   install nvm to manage nodejs
 - name: install local user tools
   hosts: localhost
