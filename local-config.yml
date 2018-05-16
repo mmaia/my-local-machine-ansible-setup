@@ -21,6 +21,8 @@
       - terminator
       - shutter
       - python-pip
+      - zsh
+      - dconf-tools
 
   - name: install ruby dependencies
     gem: name={{item}} state=present
